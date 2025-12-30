@@ -1,202 +1,156 @@
-# Stock Market Prediction & Wealth Management System
+# AI Wealth Manager - Stock Market Prediction
 
-A comprehensive AI-powered stock market analysis, prediction, and wealth management system built with Streamlit.
+🤖 **AI/ML-Driven Wealth Management System for Indian Stock Market**
 
-![Python](https://img.shields.io/badge/Python-3.12-blue)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red)
-![License](https://img.shields.io/badge/License-MIT-green)
+A comprehensive CLI application for intelligent stock market analysis, prediction, and wealth management using Machine Learning and Deep Learning.
 
-## 🚀 Features
+## 🌟 Features
 
-### 📊 Stock Analysis
-- Real-time stock data from Indian markets (NSE/BSE)
-- Comprehensive price charts with candlestick patterns
-- Support and resistance level calculation
-- Trend analysis with multiple timeframes
+- **📊 Stock Data Collection**: Fetch real-time and historical stock data from NSE/BSE via Yahoo Finance
+- **📈 Technical Analysis**: Calculate 50+ technical indicators (RSI, MACD, Bollinger Bands, etc.)
+- **🧠 Deep Learning (LSTM)**: Advanced time series prediction using bidirectional LSTM networks
+- **🌲 Random Forest**: Ensemble machine learning for robust predictions
+- **⚡ XGBoost**: High-performance gradient boosting with hyperparameter optimization
+- **🎯 Ensemble Models**: Combine multiple models for superior accuracy
+- **💼 Portfolio Management**: Intelligent portfolio allocation and optimization
+- **📉 Backtesting**: Test trading strategies on historical data
+- **🎨 Rich CLI Interface**: Beautiful command-line interface with tables and progress bars
 
-### 🔮 Price Prediction
-- Machine Learning models (Random Forest, Gradient Boosting, Linear Regression)
-- Time Series forecasting (Exponential Smoothing, Moving Average)
-- Ensemble predictions combining multiple models
-- Confidence intervals for predictions
-- Buy/Sell/Hold recommendations
+## 🚀 Quick Start
 
-### 📋 Technical Analysis
-- 20+ Technical Indicators:
-  - RSI (Relative Strength Index)
-  - MACD (Moving Average Convergence Divergence)
-  - Bollinger Bands
-  - Moving Averages (SMA, EMA)
-  - Stochastic Oscillator
-  - ADX (Average Directional Index)
-  - ATR (Average True Range)
-  - And more...
-- Trading signal generation
-- Multi-indicator signal confirmation
+### Installation
 
-### 💰 Wealth Calculator
-- Future Value Calculator
-- SIP (Systematic Investment Plan) Calculator
-- Goal-Based Investment Planner
-- Retirement Planning Calculator
-- Lumpsum vs SIP Comparison
-- Year-by-year investment growth schedule
-
-### 📈 Portfolio Manager
-- Add and track stock holdings
-- Real-time portfolio valuation
-- Profit/Loss calculation
-- Asset allocation recommendations by risk profile
-- Portfolio rebalancing suggestions
-
-### 🎯 Stock Screener
-- Filter stocks by price range
-- Filter by returns percentage
-- RSI-based filtering (oversold/overbought)
-- Sector-wise filtering
-- Top picks identification
-
-### 📰 Market Overview
-- Live market indices (NIFTY 50, BANK NIFTY, SENSEX, etc.)
-- Sector-wise performance analysis
-- Market heatmap visualization
-- Top gainers and losers
-
-## 📦 Installation
-
-### Prerequisites
-- Python 3.10 or higher
-- pip (Python package manager)
-
-### Quick Setup
-
-1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/stock_market_prediction.git
+# Clone the repository
+git clone https://github.com/Joy-Macwan/stock_market_prediction.git
 cd stock_market_prediction
-```
 
-2. **Run the setup script**
-```bash
-chmod +x setup.sh
-./setup.sh
-```
-
-3. **Start the application**
-```bash
-chmod +x run.sh
-./run.sh
-```
-
-### Manual Installation
-
-```bash
 # Create virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
-
-# Run the application
-streamlit run app.py
 ```
 
-## 🎮 Usage
+### Usage
 
-1. **Open your browser** and navigate to `http://localhost:8501`
+```bash
+# Display help and available commands
+python wealth.py --help
 
-2. **Select a module** from the sidebar:
-   - 🏠 Dashboard - Quick market overview
-   - 📊 Stock Analysis - Detailed stock analysis
-   - 🔮 Price Prediction - AI-powered predictions
-   - 💰 Wealth Calculator - Investment calculators
-   - 📈 Portfolio Manager - Track your investments
-   - 📋 Technical Analysis - Technical indicators
-   - 🎯 Stock Screener - Filter stocks
-   - 📰 Market Overview - Market summary
+# Show application info and features
+python wealth.py info
 
-3. **For Stock Analysis**:
-   - Select a stock from the dropdown
-   - Choose time period
-   - Click "Analyze Stock"
+# Fetch stock data
+python wealth.py fetch -s RELIANCE.NS -p 1y
 
-4. **For Price Prediction**:
-   - Select a stock
-   - Choose prediction days (7-90 days)
-   - Click "Generate Prediction"
+# Perform technical analysis
+python wealth.py analyze -s TCS.NS
 
-5. **For Wealth Calculator**:
-   - Enter your investment amount
-   - Set expected return rate
-   - Choose investment period
-   - View detailed projections
+# Predict stock prices using different models
+python wealth.py predict -s HDFCBANK.NS -m lstm -d 30
+python wealth.py predict -s INFY.NS -m xgb -d 30
+python wealth.py predict -s ICICIBANK.NS -m ensemble -d 30
+
+# Generate portfolio recommendations
+python wealth.py portfolio -s RELIANCE.NS -s TCS.NS -s HDFCBANK.NS -i 100000
+
+# Backtest trading strategy
+python wealth.py backtest -s RELIANCE.NS -i 100000 -p 1y
+
+# List popular Indian stocks
+python wealth.py stocks
+```
 
 ## 📁 Project Structure
 
-```
+```text
 stock_market_prediction/
-├── app.py                  # Main Streamlit application
-├── config.py               # Configuration settings
-├── stock_data.py           # Stock data fetching module
-├── technical_analysis.py   # Technical indicators
-├── prediction_models.py    # ML prediction models
-├── wealth_calculator.py    # Wealth calculation tools
-├── styles.py               # Custom CSS styles
-├── requirements.txt        # Python dependencies
-├── setup.sh               # Setup script
-├── run.sh                 # Run script
-└── README.md              # Documentation
+├── src/
+│   ├── __init__.py
+│   ├── config/
+│   │   ├── __init__.py
+│   │   └── settings.py          # Application configuration
+│   ├── data/
+│   │   ├── __init__.py
+│   │   ├── collector.py         # Stock data collection
+│   │   ├── preprocessor.py      # Data preprocessing
+│   │   └── technical_indicators.py  # Technical analysis
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── base_model.py        # Base model class
+│   │   ├── lstm_model.py        # LSTM deep learning model
+│   │   ├── random_forest_model.py  # Random Forest model
+│   │   ├── xgboost_model.py     # XGBoost model
+│   │   ├── ensemble_model.py    # Ensemble model
+│   │   └── model_evaluator.py   # Model evaluation utilities
+│   ├── cli/
+│   │   ├── __init__.py
+│   │   └── main.py              # CLI application
+│   └── utils/
+│       ├── __init__.py
+│       ├── logger.py            # Logging configuration
+│       └── helpers.py           # Utility functions
+├── data/                        # Data storage
+│   ├── raw/                     # Raw downloaded data
+│   ├── processed/               # Processed data
+│   └── predictions/             # Model predictions
+├── models/                      # Saved models
+├── logs/                        # Application logs
+├── wealth.py                    # Main entry point
+├── requirements.txt             # Python dependencies
+├── pyproject.toml              # Project configuration
+└── README.md                   # This file
 ```
 
-## 🔧 Configuration
+## 🎯 Supported Models
 
-Edit `config.py` to customize:
-- Default stock lists
-- Technical indicator parameters
-- Risk profiles
-- Color themes
-- Chart settings
+| Model            | Type             | Best For                               |
+| ---------------- | ---------------- | -------------------------------------- |
+| **LSTM**         | Deep Learning    | Time series patterns, long-term trends |
+| **Random Forest**| Machine Learning | Feature importance, robust predictions |
+| **XGBoost**      | Gradient Boosting| High accuracy, fast training           |
+| **Ensemble**     | Combined         | Best overall accuracy                  |
 
-## 📊 Data Source
+## 📊 Technical Indicators
 
-This application uses the **Bharat-SM-Data** package for fetching Indian stock market data:
-- NSE (National Stock Exchange)
-- BSE (Bombay Stock Exchange)
+The system calculates 50+ technical indicators including:
 
-> **Note**: Pass `is_index=True` when calling functions for Indices, Futures, and Options contracts.
+- **Trend**: SMA, EMA, MACD, ADX
+- **Momentum**: RSI, Stochastic, Williams %R, ROC
+- **Volatility**: Bollinger Bands, ATR, Keltner Channel
+- **Volume**: OBV, VWAP, Volume Ratio
+
+## 🇮🇳 Supported Indian Stocks
+
+The system supports all NSE/BSE listed stocks. Popular ones include:
+
+- RELIANCE.NS, TCS.NS, HDFCBANK.NS, INFY.NS, ICICIBANK.NS
+- SBIN.NS, BHARTIARTL.NS, KOTAKBANK.NS, ITC.NS, LT.NS
+- And many more...
 
 ## ⚠️ Disclaimer
 
-This application is for **educational and informational purposes only**. It is NOT financial advice. Always:
-- Do your own research before investing
-- Consult with a qualified financial advisor
-- Understand the risks involved in stock market investments
+This software is for educational and research purposes only. It is NOT financial advice.
+
 - Past performance does not guarantee future results
+- Stock market investments carry inherent risks
+- Always do your own research before investing
+- Consult a qualified financial advisor for investment decisions
 
-## 🛠️ Technologies Used
+## 📄 License
 
-- **Frontend**: Streamlit, HTML, CSS, JavaScript
-- **Data Processing**: Pandas, NumPy
-- **Machine Learning**: Scikit-learn
-- **Visualization**: Plotly, Matplotlib, Seaborn
-- **Technical Analysis**: TA-Lib (ta)
-- **Data Source**: Bharat-SM-Data
+MIT License - See LICENSE file for details.
 
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📄 License
+## 📧 Contact
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙏 Acknowledgments
-
-- [Bharat-SM-Data](https://github.com/Sampad-Hegde/Bharat-SM-Data) for Indian market data
-- [Streamlit](https://streamlit.io/) for the amazing web framework
-- [Plotly](https://plotly.com/) for interactive charts
+For questions or feedback, please open an issue on GitHub.
 
 ---
 
-**Built with ❤️ for Indian Stock Market Analysis**
+Made with ❤️ for the Indian Stock Market Community
